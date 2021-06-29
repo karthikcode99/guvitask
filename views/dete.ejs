@@ -1,0 +1,21 @@
+<% layout('layouts/boilerplate')%>  
+   <h1> My Profile</h1>
+<% for (let ren of propty) {%>
+
+    <div class="row">
+
+        <div class="col-md-4">
+        <div class="card" style="width: 18rem;"></div>
+            <div class="card-body"></div>
+           </div>
+            <p class="card-title">Name <%=ren.name%></p>
+            </div>
+                <p class="class-text" >Age <%=ren.age%></p>
+                <p class="class-text">Date of Birth <%=ren.dob%></p>
+                <p  class="class-text">Gender <%=ren.gender%></p>
+                <p class="card-text">Mobile no <%=ren.mobile %></p>
+                <!-- <a class="btn btn-primary" href="/Allrooms"></a> -->
+         </div>
+    </div>
+</div>
+<% }%>
