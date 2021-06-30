@@ -80,9 +80,8 @@ app.post('/register' ,async(req, res) =>{
      try{
          const user=new User({email, username})
 const registeredUser=await User.register(user, password);
-req.flash('sucess','Welcome back')
  await registeredUser.save()
-   res.redirect('/login')
+   res.redirect('/Alldetails')
      }
         catch (e){ cosole.log('error',e)}
   
