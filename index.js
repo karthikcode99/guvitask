@@ -77,19 +77,23 @@ app.get('/profile', isLoggedIn, async(req,res)=>{
   res.render('register');
 });
 app.post('/register' ,async(req, res) =>{
+    try{
     const { username, email, password, confirm}= req.body;
     if(password==confirm){
   const user=new User({email, username})
 const registeredUser=await User.register(user, password);
 req.flash('sucess','Welcome back')
  await registeredUser.save()
-console.log(registeredUser);
    res.redirect('/login')
 }
 else{
 req.flash('error',"password and confrim password should be same");
 res.redirect('/register')
 }
+    }catch (e) {
+        req.flash('error', e);
+        res.redirect('/register');
+    }
 });
 app.get('/login', (req, res)=>{
 res.render('login')
