@@ -77,11 +77,15 @@ app.get('/profile', isLoggedIn, async(req,res)=>{
 app.post('/register' ,async(req, res) =>{
     const { username, email, password, confirm}= req.body;
     if(password==confirm){
-  const user=new User({email, username})
+     try{
+         const user=new User({email, username})
 const registeredUser=await User.register(user, password);
 req.flash('sucess','Welcome back')
  await registeredUser.save()
    res.redirect('/login')
+     }
+        catch (e){ cosole.log('error',e)}
+  
 }
 else{
 req.flash('error',"password and confrim password should be same");
