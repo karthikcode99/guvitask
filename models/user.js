@@ -16,5 +16,5 @@ const passportLocalMongoose = require('passport-local-mongoose');
         } 
 })
 userSchema.plugin(passportLocalMongoose)
-const User=mongoose.model('User',userSchema);
+const User=mongoose.model('Userp',userSchema);
 module.exports=User;
