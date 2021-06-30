@@ -81,10 +81,12 @@ app.post('/register' ,async(req, res) =>{
          const user=new User({email, username})
 const registeredUser=await User.register(user, password);
  await registeredUser.save()
-   res.redirect('/Alldetails')
+   res.redirect('/login')
      }
-        catch (e){ cosole.log('error',e)}
-  
+        catch (e) {
+        req.flash('error', e);
+        res.redirect('/register');
+    }
 }
 else{
 req.flash('error',"password and confrim password should be same");
