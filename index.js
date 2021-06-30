@@ -81,6 +81,7 @@ app.post('/register' ,async(req, res) =>{
          const user=new User({email, username})
 const registeredUser=await User.register(user, password);
  await registeredUser.save()
+         res.redirect('/login')
      }
         catch (e) {
         req.flash('error', e);
