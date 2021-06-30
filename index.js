@@ -60,11 +60,16 @@ app.get('/', (req,res)=>{
      res.render('index')
   })  
 app.post('/Alldetails', isLoggedIn ,async(req,res)=>{
+    try{
     const {name, gender, dob, mobile, age}=req.body;
     const remind=new Prop({ name, gender, dob, mobile, age })
     await remind.save()
     console.log(remind)
-    res.redirect('/profile')
+    }
+    catch (e) {
+        console.log('error', e);
+       res.redirect('/profile');
+    }
 })
 app.get('/profile', isLoggedIn, async(req,res)=>{
     const propty=await Prop.find({})
