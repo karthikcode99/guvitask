@@ -84,7 +84,7 @@ const registeredUser=await User.register(user, password);
          res.redirect('/login')
      }
         catch (e) {
-        req.flash('error', e);
+        console.log('error', e);
         res.redirect('/register');
     }
 }
